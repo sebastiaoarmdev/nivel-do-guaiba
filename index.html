@@ -14,38 +14,24 @@
 </head>
 <body>
 	<!--
+		To-Do: dá pra pegar elementos dentro de iframe de domínios diferentes?
+	-->
 	<iframe
 		src="https://nivelguaiba.com.br/" 
 		frameborder="0" 
-		style="overflow: hidden; overflow-x: hidden; overflow-y: hidden; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px" 
+		style="
+			overflow: hidden; 
+			overflow-x: hidden; 
+			overflow-y: hidden; 
+			height: 100%; 
+			width: 100%; 
+			position: absolute; 
+			top: 0px; 
+			left: 0px; 
+			right: 0px; 
+			bottom: 0px;" 
 		height="100%" 
 		width="100%">
 	</iframe>
-	-->
-	<script>
-		async function scrapeData() {
-			try {
-				console.log("try...");
-				const response = await fetch("https://books.toscrape.com/");
-				const html = await response.text();
-				const parser = new DOMParser();
-				const doc = parser.parseFromString(html, "text/html");
-				const bookTitles = doc.querySelectorAll('h3 a');
-				bookTitles.forEach(function(title) {
-					const bookTitle = title.textContent;
-					console.log(bookTitle);
-					storeData(bookTitle);
-				});
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		function storeData(data) {
-			// code to store data in database or update UI
-		}
-
-		scrapeData();
-	</script>
 </body>
 </html>
